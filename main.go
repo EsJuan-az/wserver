@@ -2,13 +2,13 @@ package main
 
 import "net/http"
 
-func main(){
+func main() {
+	server := NewServer(":2002")
 	routes := map[string]http.HandlerFunc{
-		"/": HandleRoot,
+		"/":     AddMiddleware(HandleRoot, CheckAuth(), Logging()),
 		"/home": HandleHome,
 	}
-	server := NewServer(":2002")
-	for path, handler := range routes{
+	for path, handler := range routes {
 		server.Handle(path, handler)
 	}
 	server.Listen()

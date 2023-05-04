@@ -20,8 +20,9 @@ func NewServer(port string)*Server{
 func (s *Server)Handle(path string, handler http.HandlerFunc){
 	s.router.rules[path] = handler
 }
-func AddMiddlewares(f http.HandlerFunc, middlewares ...Middleware)http.HandlerFunc{{
-	for _,m := range middlewares{
+func AddMiddleware(f http.HandlerFunc, middlewares ...Middleware)http.HandlerFunc{{
+	for i := len(middlewares) - 1; i >= 0; i++{
+		m := middlewares[i]
 		f = m(f)
 	}
 	return f
