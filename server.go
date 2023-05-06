@@ -1,10 +1,12 @@
 package wserver
 
 import (
+
 	"fmt"
 	"net/http"
 
 	"github.com/fatih/color"
+
 )
 
 type Server struct {
@@ -13,11 +15,13 @@ type Server struct {
 }
 
 func NewServer(port string) *Server {
+
 	return &Server{
 		port:   port,
 		router: NewRouter(),
 	}
 }
+
 func (s *Server) Handle(method, path string, handler http.HandlerFunc) {
 	_, exist := s.router.rules[path]
 	if !exist{

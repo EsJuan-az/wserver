@@ -2,8 +2,11 @@ package wserver
 
 // import "net/http"
 
-func main() {
+// func main() {
 	// server := NewServer(":2002")
+
+
+
 	// routes := map[string]map[string]http.HandlerFunc{
 	// 	"/": {
 	// 		"GET": HandleRoot(CheckAuth(), Logging()),
@@ -22,4 +25,4 @@ func main() {
 	// 	}
 	// }
 	// server.Listen()
-}
+// }
