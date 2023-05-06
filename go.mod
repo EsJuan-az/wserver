@@ -1,4 +1,4 @@
-module web_server
+module github.com/JuanEs-az/wserver
 
 go 1.20
 

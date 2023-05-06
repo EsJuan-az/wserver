@@ -1,4 +1,4 @@
-package main
+package wserver
 
 import (
 	"encoding/json"
