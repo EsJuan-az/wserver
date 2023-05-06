@@ -4,7 +4,8 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"time"
+
+	"github.com/fatih/color"
 )
 
 func CheckAuth() Middleware {
@@ -23,9 +24,14 @@ func CheckAuth() Middleware {
 func Logging() Middleware {
 	return func(f http.HandlerFunc) http.HandlerFunc {
 		return func(w http.ResponseWriter, r *http.Request) {
-			start := time.Now()
 			defer func(){
-				log.Println(r.URL.Path, time.Since(start))
+				methodColors := map[string]func(format string, a ...interface{})string{
+					"GET": color.HiGreenString,
+					"POST": color.HiMagentaString,
+					"PUT": color.HiBlueString,
+					"DELETE": color.HiRedString,
+				}
+				log.Printf("%s%s",methodColors[r.Method](r.Method),r.URL.Path)
 			}()
 			f(w, r)
 		}
