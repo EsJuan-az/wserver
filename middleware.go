@@ -1,26 +1,26 @@
 package wserver
 
 import (
-	"fmt"
+	// "fmt"
 	"log"
 	"net/http"
 
 	"github.com/fatih/color"
 )
 
-func CheckAuth() Middleware {
-	return func(f http.HandlerFunc) http.HandlerFunc {
-		return func(w http.ResponseWriter, r *http.Request) {
-			flag := true
-			fmt.Println("Checking Authentiction (1)")
-			if flag {
-				f(w, r)
-			} else {
-				return
-			}
-		}
-	}
-}
+// func CheckAuth() Middleware {
+// 	return func(f http.HandlerFunc) http.HandlerFunc {
+// 		return func(w http.ResponseWriter, r *http.Request) {
+// 			flag := true
+// 			fmt.Println("Checking Authentiction (1)")
+// 			if flag {
+// 				f(w, r)
+// 			} else {
+// 				return
+// 			}
+// 		}
+// 	}
+// }
 func Logging() Middleware {
 	return func(f http.HandlerFunc) http.HandlerFunc {
 		return func(w http.ResponseWriter, r *http.Request) {
